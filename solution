@@ -1,0 +1,26 @@
+def kaprekar_split(n):
+    """Kapekar checker"""
+    squared_result = n ** 2
+    splitter = str(squared_result)
+    computater = list(map(int, splitter))
+    numbers = list(range(2,9))
+    if n == 1 or n == 0:
+        return 0
+    elif n in numbers:
+        return -1
+    elif len(computater) % 2 == 0:
+        firstpart, secondpart = (splitter[len(splitter)//2:],
+                                splitter[:len(splitter)//2])
+        final_part = int(firstpart) + int(secondpart)
+        if final_part == n:
+            return len(computater) // 2
+        else:
+            return -1
+    elif len(computater) % 2 != 0:
+        firsthalf, secondhalf = (splitter[len(splitter)//2:],
+                                splitter[:len(splitter)//2])
+        final_part2 = int(firsthalf) + int(secondhalf)
+        if final_part2 == n:
+            return len(computater) // 2
+        else:
+            return -1
